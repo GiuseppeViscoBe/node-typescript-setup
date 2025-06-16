@@ -1,10 +1,19 @@
-import express from 'express'
+import express from "express";
+import dotenv from "dotenv";
+import connectToDb from "./config/mongoDb";
+import app from "./config/app";
 
-const app = express()
+dotenv.config();
 
-const PORT = 3001
 
-app.listen(() => {
-    console.log('Server listening on port: ' + PORT)
-})
+const PORT = process.env.PORT || 8000;
 
+const startServer = async () => {
+  await connectToDb();
+
+  app.listen(PORT, () => {
+    console.log(`Server listening on port: ${PORT}`);
+  });
+};
+
+startServer();
