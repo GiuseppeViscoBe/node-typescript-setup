@@ -1,1 +1,2 @@
-# subscriptionTracker
+# Insert Project Name
+## Change package.json
